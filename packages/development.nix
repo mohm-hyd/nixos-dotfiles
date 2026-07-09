@@ -13,6 +13,6 @@
     gcc
     gdb
     gnumake
-    node.js
+    nodejs
   ];
 }
