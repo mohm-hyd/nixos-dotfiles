@@ -40,6 +40,8 @@ in
     nil
     nixpkgs-fmt
     nodejs
+    fd
+    fzf
     fuzzel
     swaybg
     xwayland-satellite
