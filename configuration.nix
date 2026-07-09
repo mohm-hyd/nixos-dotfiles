@@ -51,18 +51,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
-    iw
-    pciutils
-    usbutils
-    dig
-    traceroute
     curl
-    ripgrep
-    tree
-    neovim
-    gcc
-    lua-language-server
-    pkgs.noctalia-shell
   ];
 
   fonts.packages = with pkgs; [

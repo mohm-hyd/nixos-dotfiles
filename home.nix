@@ -12,6 +12,13 @@ let
   };
 in
 {
+  imports = [
+    ./packages/desktop.nix
+    ./packages/development.nix
+    ./packages/languages.nix
+    ./packages/utilities.nix
+  ];
+
   home.username = "mohm";
   home.homeDirectory = "/home/mohm";
   programs.git.enable = true;
@@ -34,17 +41,4 @@ in
     recursive = true;
   }) configs;
 
-  home.packages = with pkgs; [
-    alacritty
-    tmux
-    nil
-    nixpkgs-fmt
-    nodejs
-    fd
-    fzf
-    fuzzel
-    swaybg
-    xwayland-satellite
-    fastfetch
-  ];
 }
