@@ -4,11 +4,12 @@ let
   cpp = with pkgs; [
     clang-tools
   ];
-  lua = with pkgs; [
+  Lua = with pkgs; [
+    lua
     lua-language-server
   ];
 in
 
 {
-  home.packages = cpp ++ lua;
+  home.packages = cpp ++ Lua;
 }
