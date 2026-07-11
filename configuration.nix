@@ -33,13 +33,24 @@
     ];
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+  };
+
+  security.polkit.enable = true;
+
   programs.niri.enable = true;
   services.greetd = {
     enable = true;
+
     settings = {
       default_session = {
-        command = "${config.programs.niri.package}/bin/niri-session";
-        user = "mohm";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+        user = "greeter";
       };
     };
   };
@@ -56,6 +67,9 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
   ];
 
   nix.settings.experimental-features = [

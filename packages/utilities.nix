@@ -13,6 +13,7 @@ let
   cli = with pkgs; [
     ripgrep
     tree
+    libnotify
     fd
     fzf
     bat

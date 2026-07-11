@@ -17,6 +17,8 @@ in
     ./packages/development.nix
     ./packages/languages.nix
     ./packages/utilities.nix
+
+    ./services/desktop.nix
   ];
 
   home.username = "mohm";
@@ -40,5 +42,13 @@ in
     source = create_symlink "${dotfiles}/${subpath}";
     recursive = true;
   }) configs;
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "org.pwmt.zathura.desktop";
+      "inode/directory" = "thunar.desktop";
+    };
+  };
 
 }

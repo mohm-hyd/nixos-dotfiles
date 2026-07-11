@@ -7,6 +7,13 @@ let
     swaybg
     xwayland-satellite
     pkgs.noctalia-shell
+
+    thunar
+    zathura
+    polkit_gnome
+
+    wl-clipboard
+    slurp
   ];
 in
 
