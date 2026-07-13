@@ -1,3 +1,32 @@
+vim.lsp.config('*', {
+    root_markers = { '.git' },
+})
+
+vim.diagnostic.config({
+    virtual_text = true,
+    severity_sort = true,
+    float = {
+        style = 'minimal',
+        border = 'rounded',
+        source = 'if_many',
+        header = '',
+        prefix = '',
+    },
+})
+
+local orig = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or 'rounded'
+    opts.max_width = opts.max_width or 80
+    opts.max_height = opts.max_height or 24
+    opts.wrap = opts.wrap ~= false
+    return orig(contents, syntax, opts, ...)
+end
+
+
+
 --Lua language server
 vim.lsp.config("lua_ls", {
     cmd = { "lua-language-server" },

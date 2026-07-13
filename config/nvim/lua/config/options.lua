@@ -1,36 +1,46 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
+--options
+local set = vim.opt
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+set.relativenumber = true
+set.number = true
 
-vim.opt.wrap = false
-vim.opt.smartindent = true
-vim.opt.inccommand = "split"
+set.tabstop = 4
+set.softtabstop =4
+set.shiftwidth = 4
+set.autoindent = true
+set.smartindent = true
+set.expandtab = true
 
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+set.ignorecase = true
+set.smartcase = true
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.laststatus = 3
+set.termguicolors  = true
+set.background = "dark"
+set.signcolumn = "yes"
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
-vim.opt.undofile = true
+set.cursorline = true
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.isfname:append("@-@")
---vim.opt.guicursor = ""
-vim.opt.scrolloff = 8
+set.winborder = "rounded"
+
+set.wrap = false
+set.inccommand = "split"
+
+set.splitbelow = true
+set.splitright = true
+
+set.laststatus = 3
+
+set.swapfile = false
+set.backup = false
+set.undodir = vim.fn.stdpath("data") .. "/undodir"
+set.undofile = true
+
+set.clipboard = "unnamedplus"
+set.isfname:append("@-@")
+--set.guicursor = ""
+set.scrolloff = 8
 
 
-vim.opt.signcolumn = "yes"
-vim.opt.cursorline = true
-vim.opt.winborder = "rounded"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (cpying) text",
