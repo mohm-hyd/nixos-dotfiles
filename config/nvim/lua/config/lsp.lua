@@ -25,8 +25,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig(contents, syntax, opts, ...)
 end
 
-
-
 --Lua language server
 vim.lsp.config("lua_ls", {
     cmd = { "lua-language-server" },
@@ -54,9 +52,15 @@ vim.lsp.config("nil", {
     root_markers = { "flake.nix", "default.nix", ".git" },
 })
 
+vim.lsp.config("bashls", {
+    cmd = { "bash-language-server", 'start' },
+    filetypes = { 'bash', 'sh' }
+})
+
 vim.lsp.enable({
     "lua_ls",
     "clangd",
+    "bashls",
     "gopls",
     "nil",
 })

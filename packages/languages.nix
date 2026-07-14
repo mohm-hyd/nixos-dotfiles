@@ -4,6 +4,11 @@ let
   cpp = with pkgs; [
     clang-tools
   ];
+  Bash = with pkgs; [
+    shellcheck
+    bash-language-server
+    shfmt
+  ];
   Lua = with pkgs; [
     lua
     lua-language-server
@@ -11,5 +16,5 @@ let
 in
 
 {
-  home.packages = cpp ++ Lua;
+  home.packages = cpp ++ Lua ++ Bash;
 }
