@@ -1,25 +1,37 @@
 vim.pack.add({
+    --{ src = "https://github.com/mohm-hyd/VimDocPlugin" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/folke/tokyonight.nvim" }, --tokyonight colorscheme
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.pick" },
+	{ src = "https://github.com/nvim-mini/mini.icons" },
+	{ src = "https://github.com/nvim-mini/mini.statusline" },
     { src = "https://github.com/nvim-mini/mini.pairs" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 })
 
+
 require('mini.pick').setup()
 require('mini.pairs').setup()
+require('mini.icons').setup()
+MiniIcons.mock_nvim_web_devicons()
+
+local statusline = require 'mini.statusline'
+statusline.setup { use_icons = vim.g.have_nerd_font }
+---@diagnostic disable-next-line: duplicate-set-field
+statusline.section_location = function()
+  return '%2l:%-2v'
+end
 
 require('oil').setup({
 	default_file_explorer = true, --start neovim with oil
-	columns = {},
 	keymaps = {
 		["q"] = "actions.close",
 	},
 	delete_to_trash = true,
-	--[[view_options = {
+	view_options = {
 		show_hidden = true,
-	},]]--
+	},
 	skip_confirm_for_simple_edits = true,
 })
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -37,4 +49,4 @@ require("nvim-treesitter").setup({
 	indent = { enable = true },
 	})
 
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("tokyonight")
