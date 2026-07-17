@@ -9,6 +9,10 @@ let
     bash-language-server
     shfmt
   ];
+  Go = with pkgs; [
+    go
+    gopls
+  ];
   Lua = with pkgs; [
     lua
     lua-language-server
@@ -16,5 +20,5 @@ let
 in
 
 {
-  home.packages = cpp ++ Lua ++ Bash;
+  home.packages = cpp ++ Lua ++ Bash ++ Go;
 }
