@@ -31,6 +31,11 @@ in
       btw = "echo i use nixos, btw";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-vivo";
       nv = "nvim ~/nixos-dotfiles/.";
+
+      v = "nvim";
+      vi = "nvim";
+      vim = "nvim";
+
       neofetch = "fastfetch -c examples/13";
     };
     initExtra = ''

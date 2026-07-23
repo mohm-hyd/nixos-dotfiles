@@ -1,13 +1,14 @@
 vim.pack.add({
     --{ src = "https://github.com/mohm-hyd/VimDocPlugin" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/folke/tokyonight.nvim" }, --tokyonight colorscheme
+	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.pick" },
 	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/nvim-mini/mini.statusline" },
     { src = "https://github.com/nvim-mini/mini.pairs" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 })
 
 
@@ -44,9 +45,34 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 require("nvim-treesitter").setup({
-	ensure_installed = { "lua", "c", "cpp","qml" },
+	ensure_installed = { "lua", "c", "cpp","qml","rst"},
 	highlight = { enable = true },
 	indent = { enable = true },
+
 	})
+
+
+require("flash").setup({})
+
+-- 3. Map your keys (Recommended settings from folke/flash.nvim)
+vim.keymap.set({ "n", "x", "o" }, "s", function()
+  require("flash").jump()
+end, { desc = "Flash" })
+
+vim.keymap.set({ "n", "x", "o" }, "S", function()
+  require("flash").treesitter()
+end, { desc = "Flash Treesitter" })
+
+vim.keymap.set("o", "r", function()
+  require("flash").remote()
+end, { desc = "Remote Flash" })
+
+vim.keymap.set({ "o", "x" }, "R", function()
+  require("flash").treesitter_search()
+end, { desc = "Treesitter Search" })
+
+vim.keymap.set("c", "<c-s>", function()
+  require("flash").toggle()
+end, { desc = "Toggle Flash Search" })
 
 vim.cmd.colorscheme("tokyonight")

@@ -17,6 +17,7 @@ let
     fd
     fzf
     bat
+    tree-sitter
     jq
     btop
     fastfetch
