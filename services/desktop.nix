@@ -17,7 +17,7 @@
     };
   };
 
-  systemd.user.services.noctalia = {
+  /*systemd.user.services.noctalia = {
     Unit = {
       Description = "Noctalia Shell";
       After = [ "graphical-session.target" ];
@@ -33,5 +33,5 @@
       WantedBy = [ "graphical-session.target" ];
     };
   };
-
+    */
 }

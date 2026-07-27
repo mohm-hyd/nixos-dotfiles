@@ -2,11 +2,10 @@
 
 let
   desktop = with pkgs; [
-    alacritty
+    foot
     fuzzel
     swaybg
     xwayland-satellite
-    pkgs.noctalia-shell
 
     thunar
     zathura

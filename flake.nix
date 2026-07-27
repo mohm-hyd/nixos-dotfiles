@@ -9,16 +9,17 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       home-manager,
+      noctalia,
       ...
     }:
     {
@@ -31,6 +32,11 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+
               users.mohm = import ./home.nix;
               backupFileExtension = "backup";
             };

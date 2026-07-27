@@ -1,18 +1,25 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     niri = "niri";
+    noctalia= "noctalia";
     nvim = "nvim";
-    alacritty = "alacritty";
+    foot = "foot";
     tmux = "tmux";
-    noctalia = "noctalia";
     fuzzel = "fuzzel";
   };
 in
 {
   imports = [
+    inputs.noctalia.homeModules.default
+
     ./packages/desktop.nix
     ./packages/development.nix
     ./packages/languages.nix
@@ -43,6 +50,8 @@ in
     '';
   };
 
+  programs.noctalia.enable = true;
+  
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = create_symlink "${dotfiles}/${subpath}";
     recursive = true;

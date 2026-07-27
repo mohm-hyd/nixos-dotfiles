@@ -15,6 +15,7 @@ let
     tree
     libnotify
     fd
+    wev
     fzf
     bat
     tree-sitter
