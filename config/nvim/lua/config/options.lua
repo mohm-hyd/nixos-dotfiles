@@ -1,51 +1,66 @@
---options
+-- OPTIONS
 local set = vim.opt
 
+--line nums
 set.relativenumber = true
 set.number = true
 
+-- indentation and tabs
 set.tabstop = 4
-set.softtabstop =4
 set.shiftwidth = 4
 set.autoindent = true
 set.smartindent = true
 set.expandtab = true
 
+-- search settings
 set.ignorecase = true
 set.smartcase = true
 
-set.termguicolors  = true
+-- appearance
+set.termguicolors = true
 set.background = "dark"
 set.signcolumn = "yes"
 
-set.cursorline = true
-
 set.winborder = "rounded"
 
-set.wrap = false
-set.inccommand = "split"
+-- cursor line
+set.cursorline = true
 
+-- 80th column
+set.colorcolumn = "80"
+
+-- clipboard
+set.clipboard:append("unnamedplus")
+
+-- backspace
+set.backspace = "indent,eol,start"
+
+-- split windows
 set.splitbelow = true
 set.splitright = true
 
-set.laststatus = 3
+-- dw/diw/ciw works on full-word
+set.iskeyword:append("-")
 
-set.swapfile = false
-set.backup = false
-set.undodir = vim.fn.stdpath("data") .. "/undodir"
-set.undofile = true
-
-set.clipboard = "unnamedplus"
-set.isfname:append("@-@")
---set.guicursor = ""
+-- keep cursor at least 8 rows from top/bot
 set.scrolloff = 8
 
+-- undo dir settings
+set.swapfile = false
+set.backup = false
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+set.undofile = true
+
+-- incremental search
+set.incsearch = true
+
+-- faster cursor hold
+set.updatetime = 50
 
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (cpying) text",
-	callback = function()
-		vim.hl.on_yank()
-	end,
+    desc = "Highlight when yanking (copying) text",
+    callback = function()
+        vim.hl.on_yank()
+    end,
 })
-

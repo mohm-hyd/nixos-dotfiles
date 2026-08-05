@@ -61,7 +61,7 @@
     };
   };
   systemd.user.services.niri.enableDefaultPath = false;
-
+    
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [

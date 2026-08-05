@@ -7,6 +7,10 @@ let
     swaybg
     xwayland-satellite
 
+    adw-gtk3
+    nwg-look
+    papirus-icon-theme
+
     thunar
     zathura
     polkit_gnome
@@ -18,4 +22,20 @@ in
 
 {
   home.packages = desktop;
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      name = "adw-gtk3";
+      package = pkgs.adw-gtk3;
+    };
+  };
+
+
+  gtk.iconTheme = {
+    name = "Papirus";
+    package = pkgs.papirus-icon-theme;
+  };
+
 }
