@@ -1,42 +1,14 @@
---[[require("vimdoc").setup({
-    output_dir = "./doc",
+require("vimdoc").setup({
     sources = {
-        rtd = {
-            name = "readthedocs",
+        nix_any = {
+            name = "nixos-anywhere",
             fetcher = "github",
-            repo = "readthedocs/readthedocs.org",
+            repo = "nix-community/nixos-anywhere",
             branch = "main",
-            doc_path = "docs/user",
-            format = "rst",
-            extension = ".rst",
-        },
-        hump = {
-
-            name = "hump",
-            fetcher = "github",
-            repo = "vrld/hump",
-            branch = "master",
             doc_path = "docs",
-            format = "rst",
-            extension = ".rst",
-        },
-
-        moses = {
-            name = "moses",
-            fetcher = "github",
-            repo = "Yonaba/Moses",
-            branch = "master",
-            doc_path = "doc",
+            default_lang = "nix",
             format = "markdown",
             extension = ".md",
-        },
-
-        love = {
-            name = "love",
-            fetcher = "mediawiki",
-            project_url = "https://love2d.org",
-            endpoint = "/w/index.php",
-            format = "html",
         },
 
         arch = {
@@ -48,4 +20,4 @@
         }
 
     },
-})]]
+})

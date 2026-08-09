@@ -16,5 +16,5 @@ return {
     "mbbill/undotree",
     "ojroques/vim-oscyank",
     "stevearc/oil.nvim",
-    --"mohm-hyd/Vimdoc"
+    "mohm-hyd/Vimdoc"
 }
