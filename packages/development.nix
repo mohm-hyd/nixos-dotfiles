@@ -7,6 +7,7 @@
     #Nix development
     nil
     nixpkgs-fmt
+    alejandra
 
     #General Dev Tools
     tmux

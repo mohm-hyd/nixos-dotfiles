@@ -1,4 +1,4 @@
-require("vimdoc").setup({
+require("fetch-help").setup({
     sources = {
         nix_any = {
             name = "nixos-anywhere",

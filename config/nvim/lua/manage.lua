@@ -16,7 +16,7 @@ local function remove(name)
 
     if vim.uv.fs_stat(path) then
         vim.fn.delete(path, "rf")
-        print("Removed" .. name)
+        print("Removed " .. name)
     else
         print(name .. "is not installed")
     end
