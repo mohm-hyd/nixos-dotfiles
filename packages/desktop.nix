@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   desktop = with pkgs; [
     foot
     fuzzel
@@ -18,9 +16,7 @@ let
     wl-clipboard
     slurp
   ];
-in
-
-{
+in {
   home.packages = desktop;
 
   gtk = {
@@ -32,10 +28,8 @@ in
     };
   };
 
-
   gtk.iconTheme = {
     name = "Papirus";
     package = pkgs.papirus-icon-theme;
   };
-
 }

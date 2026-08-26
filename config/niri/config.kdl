@@ -169,13 +169,15 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+D hotkey-overlay-title="Run Application" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+    
+    // Native Noctalia screen locking
+    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock Screen" { spawn-sh "noctalia msg lock"; }
 
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Core Noctalia binds
-    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
     //Alt+Tab { spawn-sh "noctalia msg window-switcher"; }

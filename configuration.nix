@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -61,7 +59,7 @@
     };
   };
   systemd.user.services.niri.enableDefaultPath = false;
-    
+  services.flatpak.enable = true;
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -83,5 +81,4 @@
     "flakes"
   ];
   system.stateVersion = "26.05";
-
 }

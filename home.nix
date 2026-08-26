@@ -3,20 +3,18 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     niri = "niri";
-    noctalia= "noctalia";
+    noctalia = "noctalia";
     nvim = "nvim";
     foot = "foot";
     tmux = "tmux";
     fuzzel = "fuzzel";
   };
-in
-{
+in {
   imports = [
     inputs.noctalia.homeModules.default
 
@@ -51,11 +49,13 @@ in
   };
 
   programs.noctalia.enable = true;
-  
-  xdg.configFile = builtins.mapAttrs (name: subpath: {
-    source = create_symlink "${dotfiles}/${subpath}";
-    recursive = true;
-  }) configs;
+
+  xdg.configFile =
+    builtins.mapAttrs (name: subpath: {
+      source = create_symlink "${dotfiles}/${subpath}";
+      recursive = true;
+    })
+    configs;
 
   xdg.mimeApps = {
     enable = true;
@@ -64,5 +64,4 @@ in
       "inode/directory" = "thunar.desktop";
     };
   };
-
 }
