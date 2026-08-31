@@ -1,7 +1,7 @@
 {...}: {
   flake.nixosModules.vivobookConfiguration = {pkgs, ...}: {
     networking = {
-      hostName = "vivobook";
+      hostName = "nixos-vivo";
     };
   };
 }
