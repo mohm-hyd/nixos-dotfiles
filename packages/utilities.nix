@@ -1,9 +1,9 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   network = with pkgs; [
     iw
     dig
     traceroute
+    ethtool
   ];
   hardware = with pkgs; [
     pciutils
@@ -23,8 +23,6 @@ let
     btop
     fastfetch
   ];
-in
-
-{
+in {
   home.packages = network ++ hardware ++ cli;
 }

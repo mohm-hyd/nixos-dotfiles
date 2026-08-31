@@ -15,7 +15,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos-vivo"; # Define your hostname.
-
   networking.networkmanager = {
     enable = true;
     wifi.powersave = false;
@@ -67,8 +66,12 @@
     wget
     git
     curl
+    discord
   ];
-
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "discord"
+    ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     noto-fonts
