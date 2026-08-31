@@ -47,7 +47,7 @@
 
     system.activationScripts.niriConfig = lib.stringAfter ["specialfs"] ''
       mkdir -p /run/niri/config
-      ln -sfn ${inputs'.niri-noctalia.packages.repo-files}/* /run/niri-noctalia/config
+      ln -sfn ${inputs'.niri-noctalia.packages.repo-files}/* /run/niri/config
     '';
   });
   perSystem = {
