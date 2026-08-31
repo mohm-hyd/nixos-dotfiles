@@ -14,34 +14,32 @@
     };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      noctalia,
-      ...
-    }:
-    {
-      nixosConfigurations.nixos-vivo = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    noctalia,
+    ...
+  }: {
+    nixosConfigurations.nixos-vivo = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
 
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-
-              users.mohm = import ./home.nix;
-              backupFileExtension = "backup";
+            extraSpecialArgs = {
+              inherit inputs;
             };
-          }
-        ];
-      };
+
+            users.mohm = import ./home.nix;
+            backupFileExtension = "backup";
+          };
+        }
+      ];
     };
+  };
 }

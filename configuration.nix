@@ -14,7 +14,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos-vivo"; # Define your hostname.
+  networking.hostName = "vivobook"; # Define your hostname.
   networking.networkmanager = {
     enable = true;
     wifi.powersave = false;
