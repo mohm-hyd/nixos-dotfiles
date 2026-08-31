@@ -1,47 +1,20 @@
 {
-  description = "NixOs Base Flake";
+  description = "Master flake for nix config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # System
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # Apps
+    nvim.url = "github:mohm-hyd/nvim";
+    niri-noctalia = {
+      url = "github:mohm-hyd/niri-noctalia";
     };
+    # Flake parts
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+    wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      noctalia,
-      ...
-    }:
-    {
-      nixosConfigurations.nixos-vivo = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-
-              users.mohm = import ./home.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 }
