@@ -71,6 +71,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "discord"
+      "vscode"
     ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

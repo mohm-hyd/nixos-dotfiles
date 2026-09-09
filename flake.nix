@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos.url = "git+https://git.voidarc.co.uk/voidarc/nixos.git";
 
     noctalia = {
       url = "github:noctalia-dev/noctalia";
@@ -19,6 +20,7 @@
     nixpkgs,
     home-manager,
     noctalia,
+    nixos,
     ...
   }: {
     nixosConfigurations.nixos-vivo = nixpkgs.lib.nixosSystem {
@@ -26,6 +28,7 @@
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
+        inputs.nixos.nixosModules.steam
         {
           home-manager = {
             useGlobalPkgs = true;
