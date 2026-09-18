@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   cpp = with pkgs; [
     clang-tools
   ];
@@ -13,12 +11,13 @@ let
     go
     gopls
   ];
+  Python = with pkgs; [
+    python3
+  ];
   Lua = with pkgs; [
     lua
     lua-language-server
   ];
-in
-
-{
-  home.packages = cpp ++ Lua ++ Bash ++ Go;
+in {
+  home.packages = cpp ++ Lua ++ Bash ++ Go ++ Python;
 }

@@ -16,5 +16,9 @@ return {
     "mbbill/undotree",
     "ojroques/vim-oscyank",
     "stevearc/oil.nvim",
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "nvim-neotest/nvim-nio",
+    "theHamsta/nvim-dap-virtual-text",
     "mohm-hyd/fetch-help.nvim"
 }

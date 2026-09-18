@@ -16,6 +16,8 @@
     libnotify
     fd
     wev
+    zip
+    unzip
     fzf
     bat
     tree-sitter

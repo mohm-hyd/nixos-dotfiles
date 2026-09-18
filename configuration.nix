@@ -66,13 +66,24 @@
     wget
     git
     curl
+    unzip
     discord
+    (symlinkJoin {
+      name = "logisim-evolution-wrapped";
+      paths = [logisim-evolution];
+      buildInputs = [makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/logisim-evolution \
+          --set _JAVA_AWT_WM_NONREPARENTING "1"
+      '';
+    })
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "discord"
       "vscode"
     ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     noto-fonts
